@@ -6,6 +6,7 @@ namespace fitness_app.BL.model
     /// <summary>
     /// Пользователь 
     /// </summary>
+    [Serializable]
     public class User
     {
         #region Свойства
@@ -56,7 +57,7 @@ namespace fitness_app.BL.model
                 throw new ArgumentNullException("Пол не может быть null", nameof(gender));
             }
 
-            if(birthDate < DateTime.Parse("01.01.1900") || birthDate >= DateTime.Now )
+            if (birthDate < DateTime.Parse("01.01.1900") || birthDate >= DateTime.Now) 
             {
                 throw new ArgumentException("Невозможная дата рождения", nameof(birthDate));
             }

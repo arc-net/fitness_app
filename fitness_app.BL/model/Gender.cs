@@ -5,12 +5,13 @@ namespace fitness_app.BL.model
     /// <summary>
     ///    Пол
     /// </summary>
+    [Serializable]
     public class Gender
     {
         /// <summary>
         ///    Название
         /// </summary>
-
+        
         public string Name { get; }
 
         /// <summary>
