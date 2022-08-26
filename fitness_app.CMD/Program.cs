@@ -49,7 +49,7 @@ namespace fitness_app.CMD
                 {
                     Console.WriteLine("Неверный формат даты рождения");
                 }
-            } 
+            }  
 
             return birthDate;
         }
