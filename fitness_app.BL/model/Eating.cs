@@ -26,7 +26,6 @@ namespace fitness_app.BL.model
 
         public void Add(Food food, double weight)
         {
-            Foods.Add(food, weight);
 
             var product = Foods.Keys.FirstOrDefault(f => f.Name.Equals(food.Name));
 
