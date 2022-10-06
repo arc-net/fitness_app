@@ -2,6 +2,7 @@
 
 namespace fitness_app.BL.model
 {
+    [Serializable]
     public class Food
     {
         public string Name { get; }

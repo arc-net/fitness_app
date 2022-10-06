@@ -9,6 +9,7 @@ namespace fitness_app.BL.model
     /// <summary>
     /// Привем пищи
     /// </summary>
+    [Serializable]
     public class Eating
     {
         public DateTime Moment { get; }

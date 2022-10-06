@@ -11,6 +11,7 @@ namespace fitness_app.BL.Controller
     {
         private const string FOODS_FILE_NAME = "foods.dat";
         private const string EATINGS_FILE_NAME = "eatings.dat";
+
         private readonly User user;
         public List<Food> Foods { get; }
         public Eating Eating { get; }
@@ -23,25 +24,18 @@ namespace fitness_app.BL.Controller
             Eating = GetEatings();
         }
 
-        public bool Add(string foodName, double weight)
-        {
-            var food = Foods.SingleOrDefault(f => f.Name == foodName);
-            if(food != null)
-            {
-                Eating.Add(food, weight);
-                Save();
-                return true;
-            }
-
-            return false; 
-        }
-
+          
         public void Add(Food food, double weight)
         {
             var product = Foods.SingleOrDefault(f => f.Name == food.Name);
             if(product == null)
             {
-                Foods.Add(product);
+                Foods.Add(food);
+                Eating.Add(food, weight);
+                Save();
+            }
+            else
+            {
                 Eating.Add(product, weight);
                 Save();
             }

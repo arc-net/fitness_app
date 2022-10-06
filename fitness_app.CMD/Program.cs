@@ -1,4 +1,5 @@
 ﻿using fitness_app.BL.Controller;
+using fitness_app.BL.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,24 +16,46 @@ namespace fitness_app.CMD
             Console.WriteLine("Введите имя пользователя");
             var name = Console.ReadLine();
 
-            var userController = new UserController(name); 
-            if(userController.IsNewUser)
+            var userController = new UserController(name);
+            if (userController.IsNewUser)
             {
                 Console.WriteLine("Введите пол: ");
                 var gender = Console.ReadLine();
                 var birthDate = ParseDateTime();
                 var weight = ParseDouble("вес");
                 var height = ParseDouble("рост");
-                 
+
 
                 userController.SetNewUserData(gender, birthDate, weight, height);
 
             }
 
             Console.WriteLine(userController.CurrentUser);
+
+            Console.WriteLine("Что вы хотите сделать?");
+            Console.WriteLine("Е - ввести прием пищи");
+            var key = Console.ReadKey();
+            if (key.Key == ConsoleKey.E)
+            {
+                EnterEating();
+            }
+
             Console.ReadLine();
 
 
+        }
+
+        private static (Food, double) EnterEating()
+        {
+            Console.WriteLine("Введите имя продукта: ");
+            var food = Console.ReadLine();
+
+            Console.WriteLine("Введите калорийность: ");
+
+            var weight = ParseDouble("Вес порции");
+            var product = new Food(food);
+
+            return (product, weight);
         }
 
         private static DateTime ParseDateTime()
@@ -67,7 +90,7 @@ namespace fitness_app.CMD
                 }
                 else
                 {
-                    Console.WriteLine($"Неверный формат {name}а");
+                    Console.WriteLine($"Неверный формат поля {name}");
                 }
             }
         }
